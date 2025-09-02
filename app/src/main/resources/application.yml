@@ -1,0 +1,47 @@
+#src/main/resources/application.yml
+spring:
+  application:
+    name: mapscanner
+  
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/mapscanner}
+      auto-index-creation: true
+  
+  web:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+      allowed-headers: "*"
+
+# Google Maps Configuration
+google:
+  maps:
+    api-key: ${GOOGLE_MAPS_API_KEY:your-api-key-here}
+    query-rate-limit: 10
+    connect-timeout: 10
+    read-timeout: 30
+
+# Async Configuration
+async:
+  core-pool-size: 5
+  max-pool-size: 20
+  queue-capacity: 100
+
+# Logging
+logging:
+  level:
+    com.mapscanner: DEBUG
+    org.springframework.data.mongodb: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized

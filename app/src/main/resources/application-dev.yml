@@ -1,0 +1,43 @@
+# src/main/resources/application-dev.yml
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mapscanner_dev
+
+google:
+  maps:
+    api-key: ${GOOGLE_MAPS_API_KEY:your-dev-api-key}
+
+logging:
+  level:
+    root: INFO
+    com.mapscanner: DEBUG
+
+# src/main/resources/application-prod.yml
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+google:
+  maps:
+    api-key: ${GOOGLE_MAPS_API_KEY}
+
+logging:
+  level:
+    root: WARN
+    com.mapscanner: INFO
+
+# src/test/resources/application-test.yml
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mapscanner_test
+
+google:
+  maps:
+    api-key: test-api-key
+
+logging:
+  level:
+    com.mapscanner: DEBUG
